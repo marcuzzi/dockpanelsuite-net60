@@ -235,7 +235,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             get
             {	
                 if (_toolTipClose == null)
-                    _toolTipClose = Strings.DockPaneCaption_ToolTipClose;
+                    _toolTipClose = ThemeVS2005.Strings.DockPaneCaption_ToolTipClose;
                 return _toolTipClose;
             }
         }
@@ -246,7 +246,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             get
             {
                 if (_toolTipOptions == null)
-                    _toolTipOptions = Strings.DockPaneCaption_ToolTipOptions;
+                    _toolTipOptions = ThemeVS2005.Strings.DockPaneCaption_ToolTipOptions;
 
                 return _toolTipOptions;
             }
@@ -258,7 +258,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             get
             {	
                 if (_toolTipAutoHide == null)
-                    _toolTipAutoHide = Strings.DockPaneCaption_ToolTipAutoHide;
+                    _toolTipAutoHide = ThemeVS2005.Strings.DockPaneCaption_ToolTipAutoHide;
                 return _toolTipAutoHide;
             }
         }
@@ -289,7 +289,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             }
         }
 
-        protected override int MeasureHeight()
+        protected internal override int MeasureHeight()
         {
             int height = TextFont.Height + TextGapTop + TextGapBottom;
 

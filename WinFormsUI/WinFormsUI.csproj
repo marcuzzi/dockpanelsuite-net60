@@ -3,6 +3,25 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
+    <PackageId>DockPanelSuite</PackageId>
+    <PackageVersion>3.1.0</PackageVersion>
+    <FileVersion>3.1.0.0</FileVersion>
+    <Authors>Weifen Luo and other contributors</Authors>
+    <Description>The docking library for .Net Windows Forms development which mimics Visual Studio .Net.</Description>
+    <Copyright>(C) 2007-2020 Weifen Luo and other contributors</Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>http://dockpanelsuite.com</PackageProjectUrl>
+    <PackageReleaseNotes>
+      Release notes can be found at GitHub,
+      https://github.com/dockpanelsuite/dockpanelsuite/releases
+
+      Visual Studio 2003 Theme: https://www.nuget.org/packages/DockPanelSuite.ThemeVS2003/
+      Visual Studio 2005 Theme: https://www.nuget.org/packages/DockPanelSuite.ThemeVS2005/
+      Visual Studio 2012 Themes: https://www.nuget.org/packages/DockPanelSuite.ThemeVS2012/
+      Visual Studio 2013 Themes: https://www.nuget.org/packages/DockPanelSuite.ThemeVS2013/
+      Visual Studio 2015 Themes: https://www.nuget.org/packages/DockPanelSuite.ThemeVS2015/
+    </PackageReleaseNotes>
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 
@@ -17,6 +36,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AssemblyName>WeifenLuo.WinFormsUI.Docking</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>dockpanelsuite.snk</AssemblyOriginatorKeyFile>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>1701;1702;CA1416</NoWarn>
   </PropertyGroup>
@@ -24,5 +46,20 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <NoWarn>1701;1702;CA1416</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="ThemeVS2005\Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="ThemeVS2005\Strings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 
 </Project>
