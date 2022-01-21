@@ -1,11 +1,7 @@
-DockPanel Suite
-===============
+DockPanel Suite .NET 6.0
+========================
 
-[![Join the chat at https://gitter.im/dockpanelsuite/dockpanelsuite](https://img.shields.io/gitter/room/dockpanelsuite/dockpanelsuite.svg?style=flat-square)](https://gitter.im/dockpanelsuite/dockpanelsuite?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![NuGet Version](https://img.shields.io/nuget/v/DockPanelSuite.svg?style=flat-square)](https://www.nuget.org/packages/DockPanelSuite/)
-[![Build status](https://img.shields.io/github/workflow/status/dockpanelsuite/dockpanelsuite/CI?style=flat-square)](https://github.com/dockpanelsuite/dockpanelsuite/actions?query=workflow%3ACI)
-
-> **This project is looking for new maintainers. Please read [this](https://github.com/dockpanelsuite/dockpanelsuite/issues/663) for more information.**
+> **This is a fork of the dockpanelsuite project to build on Visual Studio 2022 and .NET 6.0
 
 DockPanel Suite - The Visual Studio inspired docking library for .NET WinForms
 
