@@ -302,7 +302,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             }
         }
 
-        internal protected virtual Rectangle ContentRectangle
+        protected internal virtual Rectangle ContentRectangle
         {
             get
             {
@@ -1218,7 +1218,6 @@ namespace WeifenLuo.WinFormsUI.Docking
             DockPanel.ResumeLayout(true, true);
         }
 
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == (int)Win32.Msgs.WM_MOUSEACTIVATE)

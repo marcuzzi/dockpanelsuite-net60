@@ -47,7 +47,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             }
         }
 
-        protected override DockPaneStripBase.Tab CreateTab(IDockContent content)
+        protected internal override DockPaneStripBase.Tab CreateTab(IDockContent content)
         {
             return new TabVS2003(content);
         }
@@ -258,7 +258,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             get
             {	
                 if (_toolTipClose == null)
-                    _toolTipClose = Strings.DockPaneStrip_ToolTipClose;
+                    _toolTipClose = WeifenLuo.WinFormsUI.ThemeVS2003.Strings.DockPaneStrip_ToolTipClose;
                 return _toolTipClose;
             }
         }
@@ -270,7 +270,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             get
             {	
                 if (_toolTipScrollLeft == null)
-                    _toolTipScrollLeft = Strings.DockPaneStrip_ToolTipScrollLeft;
+                    _toolTipScrollLeft = WeifenLuo.WinFormsUI.ThemeVS2003.Strings.DockPaneStrip_ToolTipScrollLeft;
                 return _toolTipScrollLeft;
             }
         }
@@ -282,7 +282,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             get
             {	
                 if (_toolTipScrollRight == null)
-                    _toolTipScrollRight = Strings.DockPaneStrip_ToolTipScrollRight;
+                    _toolTipScrollRight = WeifenLuo.WinFormsUI.ThemeVS2003.Strings.DockPaneStrip_ToolTipScrollRight;
                 return _toolTipScrollRight;
             }
         }
@@ -461,7 +461,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             base.Dispose (disposing);
         }
 
-        protected override int MeasureHeight()
+        protected internal override int MeasureHeight()
         {
             if (Appearance == DockPane.AppearanceStyle.ToolWindow)
                 return MeasureHeight_ToolWindow();
@@ -643,7 +643,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             }
         }
 
-        protected override void EnsureTabVisible(IDockContent content)
+        protected internal override void EnsureTabVisible(IDockContent content)
         {
             if (Appearance != DockPane.AppearanceStyle.Document || !Tabs.Contains(content))
                 return;
@@ -1040,7 +1040,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         }
 
         /// <exclude/>
-        protected override int HitTest(Point point)
+        protected internal override int HitTest(Point point)
         {
             Rectangle rectTabStrip = TabsRectangle;
 

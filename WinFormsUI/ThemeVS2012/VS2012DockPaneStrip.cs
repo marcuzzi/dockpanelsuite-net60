@@ -47,7 +47,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             }
         }
 
-        protected override Tab CreateTab(IDockContent content)
+        protected internal override Tab CreateTab(IDockContent content)
         {
             return new TabVS2012(content);
         }
@@ -382,7 +382,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             get
             {
                 if (m_toolTipSelect == null)
-                    m_toolTipSelect = Strings.DockPaneStrip_ToolTipWindowList;
+                    m_toolTipSelect = WeifenLuo.WinFormsUI.ThemeVS2012.Strings.DockPaneStrip_ToolTipWindowList;
                 return m_toolTipSelect;
             }
         }
@@ -533,7 +533,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             base.Dispose(disposing);
         }
 
-        protected override int MeasureHeight()
+        protected internal override int MeasureHeight()
         {
             if (Appearance == DockPane.AppearanceStyle.ToolWindow)
                 return MeasureHeight_ToolWindow();
@@ -810,7 +810,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             DocumentTabsOverflow = overflow;
         }
 
-        protected override void EnsureTabVisible(IDockContent content)
+        protected internal override void EnsureTabVisible(IDockContent content)
         {
             if (Appearance != DockPane.AppearanceStyle.Document || !Tabs.Contains(content))
                 return;
@@ -1422,7 +1422,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             }
         }
 
-        protected override int HitTest(Point point)
+        protected internal override int HitTest(Point point)
         {
             if (!TabsRectangle.Contains(point))
                 return -1;

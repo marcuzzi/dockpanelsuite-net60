@@ -486,7 +486,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         }
 
         /// <exclude/>
-        protected override int MeasureHeight()
+        protected internal override int MeasureHeight()
         {
             return Math.Max(ImageGapBottom +
                 ImageGapTop + ImageHeight,

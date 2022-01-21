@@ -60,7 +60,6 @@ namespace WeifenLuo.WinFormsUI.Docking
             }
         }
 
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]         
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == (int)Win32.Msgs.WM_LBUTTONDBLCLK)

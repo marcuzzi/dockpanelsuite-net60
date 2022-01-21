@@ -459,7 +459,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             Invalidate();
         }
 
-        protected override int MeasureHeight()
+        protected internal override int MeasureHeight()
         {
             return 31;
         }

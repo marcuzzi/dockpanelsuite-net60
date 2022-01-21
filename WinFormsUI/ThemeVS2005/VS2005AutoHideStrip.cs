@@ -521,7 +521,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             return new Rectangle((int)bounds.Left, (int)bounds.Top, (int)bounds.Width, (int)bounds.Height);
         }
 
-        protected override int MeasureHeight()
+        protected internal override int MeasureHeight()
         {
             return Math.Max(ImageGapBottom +
                 ImageGapTop + ImageHeight,
