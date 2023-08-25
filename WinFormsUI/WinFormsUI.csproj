@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <PackageId>DockPanelSuite</PackageId>
     <PackageVersion>3.1.0</PackageVersion>
     <FileVersion>3.1.0.0</FileVersion>
