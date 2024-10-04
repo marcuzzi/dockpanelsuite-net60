@@ -1,9 +1,9 @@
 [![Build status](https://img.shields.io/github/actions/workflow/status/marcuzzi/dockpanelsuite-net60/main.yml?style=flat-square)](https://github.com/marcuzzi/dockpanelsuite-net60/actions?query=workflow%3ACI)
 
-DockPanel Suite .NET 6.0
-========================
+DockPanel Suite .NET 6.0 (and later)
+====================================
 
-> **This is a fork of the dockpanelsuite project to build on Visual Studio 2022 and .NET 6.0**
+> **This is a fork of the dockpanelsuite project to build on .NET 6.0 and later**
 
 DockPanel Suite - The Visual Studio inspired docking library for .NET WinForms
 
