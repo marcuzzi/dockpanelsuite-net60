@@ -1,3 +1,5 @@
+[![Build status](https://img.shields.io/github/actions/workflow/status/marcuzzi/dockpanelsuite-net60/main.yml?style=flat-square)](https://github.com/marcuzzi/dockpanelsuite-net60/actions?query=workflow%3ACI)
+
 DockPanel Suite .NET 6.0
 ========================
 
