@@ -27,7 +27,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         public IPaintingService PaintingService { get; protected set; }
 
-        protected ToolStripRenderer ToolStripRenderer { get; set;}
+        protected ToolStripRenderer ToolStripRenderer { get; set; }
 
         private Dictionary<ToolStrip, KeyValuePair<ToolStripRenderMode, ToolStripRenderer>> _stripBefore
             = new Dictionary<ToolStrip, KeyValuePair<ToolStripRenderMode, ToolStripRenderer>>();
@@ -38,7 +38,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                 return;
 
             _stripBefore[toolStrip] = new KeyValuePair<ToolStripRenderMode, ToolStripRenderer>(toolStrip.RenderMode, toolStrip.Renderer);
-            if(ToolStripRenderer != null)
+            if (ToolStripRenderer != null)
                 toolStrip.Renderer = ToolStripRenderer;
 
             if (Win32Helper.IsRunningOnMono)

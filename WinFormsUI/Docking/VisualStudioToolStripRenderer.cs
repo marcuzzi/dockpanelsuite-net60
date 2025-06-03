@@ -484,13 +484,13 @@ namespace WeifenLuo.WinFormsUI.Docking
                     color = _palette.CommandBarMenuDefault.Text;
                 }
             }
-            else 
+            else
             {
                 // Default color, if not it will be black no matter what 
                 if (!e.Item.Enabled)
                 {
                     color = _palette.CommandBarMenuPopupDisabled.Text;
-                } 
+                }
                 else
                 {
                     color = _palette.CommandBarMenuDefault.Text;
@@ -501,15 +501,15 @@ namespace WeifenLuo.WinFormsUI.Docking
         }
 
         #region helpers
-        private static void DrawRectangle(Graphics graphics, Rectangle rect, Color brushBegin, 
+        private static void DrawRectangle(Graphics graphics, Rectangle rect, Color brushBegin,
             Color brushMiddle, Color brushEnd, Color penColor, bool glass)
         {
             RectangleF firstHalf = new RectangleF(
-                rect.X, rect.Y, 
+                rect.X, rect.Y,
                 rect.Width, (float)rect.Height / 2);
 
             RectangleF secondHalf = new RectangleF(
-                rect.X, rect.Y + (float)rect.Height / 2, 
+                rect.X, rect.Y + (float)rect.Height / 2,
                 rect.Width, (float)rect.Height / 2);
 
             if (brushMiddle.IsEmpty && brushEnd.IsEmpty)
@@ -544,7 +544,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             DrawRectangle(graphics, rect, brushBegin, Color.Empty, brushEnd, penColor, glass);
         }
 
-        private static void DrawRectangle(Graphics graphics, Rectangle rect, Color brush, 
+        private static void DrawRectangle(Graphics graphics, Rectangle rect, Color brush,
             Color penColor, bool glass)
         {
             DrawRectangle(graphics, rect, brush, Color.Empty, Color.Empty, penColor, glass);

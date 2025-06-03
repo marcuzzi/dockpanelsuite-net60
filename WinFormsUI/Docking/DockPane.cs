@@ -1226,9 +1226,9 @@ namespace WeifenLuo.WinFormsUI.Docking
             base.WndProc(ref m);
         }
 
-#region IDockDragSource Members
+        #region IDockDragSource Members
 
-#region IDragSource Members
+        #region IDragSource Members
 
         Control IDragSource.DragControl
         {
@@ -1237,7 +1237,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         public IDockContent MouseOverTab { get; set; }
 
-#endregion
+        #endregion
 
         bool IDockDragSource.IsDockStateValid(DockState dockState)
         {
@@ -1337,10 +1337,10 @@ namespace WeifenLuo.WinFormsUI.Docking
                 DockState = DockState.Document;
         }
 
-#endregion
+        #endregion
 
-#region cachedLayoutArgs leak workaround
-        
+        #region cachedLayoutArgs leak workaround
+
         /// <summary>
         /// There's a bug in the WinForms layout engine
         /// that can result in a deferred layout to not
@@ -1365,6 +1365,6 @@ namespace WeifenLuo.WinFormsUI.Docking
                 _lastParentWindow = newParent;
             }
         }
-#endregion
+        #endregion
     }
 }

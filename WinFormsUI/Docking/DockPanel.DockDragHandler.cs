@@ -234,15 +234,15 @@ namespace WeifenLuo.WinFormsUI.Docking
                         //{
                         //    if (value == SHCore.PROCESS_DPI_AWARENESS.PROCESS_SYSTEM_DPI_AWARE)
                         //    {
-                                var allScreens = Screen.AllScreens;
-                                var mousePos = Control.MousePosition;
-                                foreach (var screen in allScreens)
-                                {
-                                    if (screen.Bounds.Contains(mousePos))
-                                    {
-                                        Bounds = screen.Bounds;
-                                    }
-                                }
+                        var allScreens = Screen.AllScreens;
+                        var mousePos = Control.MousePosition;
+                        foreach (var screen in allScreens)
+                        {
+                            if (screen.Bounds.Contains(mousePos))
+                            {
+                                Bounds = screen.Bounds;
+                            }
+                        }
                         //    }
                         //}
                     }

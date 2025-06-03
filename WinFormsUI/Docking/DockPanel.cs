@@ -32,9 +32,9 @@ namespace WeifenLuo.WinFormsUI.Docking
         private readonly FloatWindowCollection m_floatWindows;
         private AutoHideWindowControl m_autoHideWindow;
         private DockWindowCollection m_dockWindows;
-        private readonly DockContent m_dummyContent; 
+        private readonly DockContent m_dummyContent;
         private readonly Control m_dummyControl;
-        
+
         public DockPanel()
         {
             ShowAutoHideContentOnHover = true;
@@ -53,7 +53,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             m_autoHideWindow = Theme.Extender.AutoHideWindowFactory.CreateAutoHideWindow(this);
             m_autoHideWindow.Visible = false;
-            m_autoHideWindow.ActiveContentChanged += m_autoHideWindow_ActiveContentChanged; 
+            m_autoHideWindow.ActiveContentChanged += m_autoHideWindow_ActiveContentChanged;
             SetAutoHideWindowParent();
 
             LoadDockWindows();
@@ -113,7 +113,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         internal AutoHideStripBase AutoHideStripControl
         {
             get
-            {	
+            {
                 if (m_autoHideStripControl == null)
                 {
                     m_autoHideStripControl = Theme.Extender.AutoHideStripFactory.CreateAutoHideStrip(this);
@@ -170,7 +170,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
                 m_disposed = true;
             }
-                
+
             base.Dispose(disposing);
         }
 
@@ -200,7 +200,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             {
                 if (Win32Helper.IsRunningOnMono && value)
                     throw new InvalidOperationException("AllowEndUserDocking can only be false if running on Mono");
-                    
+
                 m_allowEndUserDocking = value;
             }
         }
@@ -274,7 +274,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         [LocalizedDescription("DockPanel_ShowDocumentIcon_Description")]
         public bool ShowDocumentIcon
         {
-            get	{	return m_showDocumentIcon;	}
+            get { return m_showDocumentIcon; }
             set
             {
                 if (m_showDocumentIcon == value)
@@ -581,7 +581,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(DocumentStyle.DockingWindow)]
         public DocumentStyle DocumentStyle
         {
-            get	{	return m_documentStyle;	}
+            get { return m_documentStyle; }
             set
             {
                 if (value == m_documentStyle)
@@ -739,7 +739,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         internal void AddContent(IDockContent content)
         {
             if (content == null)
-                throw(new ArgumentNullException());
+                throw (new ArgumentNullException());
 
             if (!Contents.Contains(content))
             {
@@ -781,8 +781,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         internal void RemoveContent(IDockContent content)
         {
             if (content == null)
-                throw(new ArgumentNullException());
-            
+                throw (new ArgumentNullException());
+
             if (Contents.Contains(content))
             {
                 Contents.Remove(content);
@@ -807,7 +807,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             if (FloatWindows.Count != 0)
                 return;
 
-            if (ParentForm == null) 
+            if (ParentForm == null)
                 return;
 
             ParentForm.Focus();
@@ -817,12 +817,12 @@ namespace WeifenLuo.WinFormsUI.Docking
         {
             int oldIndex = Panes.IndexOf(pane);
             if (oldIndex == -1)
-                throw(new ArgumentException(Strings.DockPanel_SetPaneIndex_InvalidPane));
+                throw (new ArgumentException(Strings.DockPanel_SetPaneIndex_InvalidPane));
 
             if (index < 0 || index > Panes.Count - 1)
                 if (index != -1)
-                    throw(new ArgumentOutOfRangeException(Strings.DockPanel_SetPaneIndex_InvalidIndex));
-                
+                    throw (new ArgumentOutOfRangeException(Strings.DockPanel_SetPaneIndex_InvalidIndex));
+
             if (oldIndex == index)
                 return;
             if (oldIndex == Panes.Count - 1 && index == -1)
@@ -879,7 +879,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         {
             SetAutoHideWindowParent();
             GetMdiClientController().ParentForm = (this.Parent as Form);
-            base.OnParentChanged (e);
+            base.OnParentChanged(e);
         }
 
         private void SetAutoHideWindowParent()
@@ -899,7 +899,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         protected override void OnVisibleChanged(EventArgs e)
         {
-            base.OnVisibleChanged (e);
+            base.OnVisibleChanged(e);
 
             if (Visible)
                 SetMdiClient();
@@ -991,7 +991,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                 if (!pane.Visible || pane.DockState != DockState.Document)
                     continue;
 
-                count ++;
+                count++;
             }
 
             if (count == 0)
@@ -1102,8 +1102,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [LocalizedDescription("DockPanel_ContentAdded_Description")]
         public event EventHandler<DockContentEventArgs> ContentAdded
         {
-            add	{	Events.AddHandler(ContentAddedEvent, value);	}
-            remove	{	Events.RemoveHandler(ContentAddedEvent, value);	}
+            add { Events.AddHandler(ContentAddedEvent, value); }
+            remove { Events.RemoveHandler(ContentAddedEvent, value); }
         }
         protected virtual void OnContentAdded(DockContentEventArgs e)
         {
@@ -1117,8 +1117,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [LocalizedDescription("DockPanel_ContentRemoved_Description")]
         public event EventHandler<DockContentEventArgs> ContentRemoved
         {
-            add	{	Events.AddHandler(ContentRemovedEvent, value);	}
-            remove	{	Events.RemoveHandler(ContentRemovedEvent, value);	}
+            add { Events.AddHandler(ContentRemovedEvent, value); }
+            remove { Events.RemoveHandler(ContentRemovedEvent, value); }
         }
         protected virtual void OnContentRemoved(DockContentEventArgs e)
         {

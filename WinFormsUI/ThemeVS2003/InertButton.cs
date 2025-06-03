@@ -28,7 +28,7 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2003
 
             public new static RepeatClickEventArgs Empty
             {
-                get    {    return _empty;    }
+                get { return _empty; }
             }
         }
 
@@ -60,7 +60,7 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2003
         {
             InternalConstruct(imageEnabled, imageDisabled);
         }
-        
+
         private void InternalConstruct(Image imageEnabled, Image imageDisabled)
         {
             // Remember parameters
@@ -97,7 +97,7 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2003
 
         public Color BorderColor
         {
-            get    {    return m_borderColor;    }
+            get { return m_borderColor; }
             set
             {
                 if (m_borderColor != value)
@@ -132,7 +132,7 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2003
         public Image ImageEnabled
         {
             get
-            { 
+            {
                 if (m_imageEnabled != null)
                     return m_imageEnabled;
 
@@ -196,7 +196,7 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2003
 
         public int ImageIndexEnabled
         {
-            get    {    return m_imageIndexEnabled;    }
+            get { return m_imageIndexEnabled; }
             set
             {
                 if (m_imageIndexEnabled != value)
@@ -209,7 +209,7 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2003
 
         public int ImageIndexDisabled
         {
-            get    {    return m_imageIndexDisabled;    }
+            get { return m_imageIndexDisabled; }
             set
             {
                 if (m_imageIndexDisabled != value)
@@ -236,7 +236,7 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2003
 
         public bool Monochrome
         {
-            get    {    return m_monochrom;    }
+            get { return m_monochrom; }
             set
             {
                 if (value != m_monochrom)
@@ -249,14 +249,14 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2003
 
         public bool RepeatClick
         {
-            get    {    return (ClickStatus != RepeatClickStatus.Disabled);    }
-            set    {    ClickStatus = RepeatClickStatus.Stopped;    }
+            get { return (ClickStatus != RepeatClickStatus.Disabled); }
+            set { ClickStatus = RepeatClickStatus.Stopped; }
         }
 
         private RepeatClickStatus m_clickStatus = RepeatClickStatus.Disabled;
         private RepeatClickStatus ClickStatus
         {
-            get    {    return m_clickStatus;    }
+            get { return m_clickStatus; }
             set
             {
                 if (m_clickStatus == value)
@@ -278,26 +278,26 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2003
         private int m_repeatClickDelay = 500;
         public int RepeatClickDelay
         {
-            get    {    return m_repeatClickDelay;    } 
-            set    {    m_repeatClickDelay = value;    }
+            get { return m_repeatClickDelay; }
+            set { m_repeatClickDelay = value; }
         }
 
         private int m_repeatClickInterval = 100;
         public int RepeatClickInterval
         {
-            get    {    return m_repeatClickInterval;    }
-            set    {    m_repeatClickInterval = value;    }
+            get { return m_repeatClickInterval; }
+            set { m_repeatClickInterval = value; }
         }
 
         private Timer m_timer;
         private Timer Timer
         {
-            get    {    return m_timer;    }
+            get { return m_timer; }
         }
 
         public string ToolTipText
         {
-            get    {    return m_toolTipText;    }
+            get { return m_toolTipText; }
             set
             {
                 if (m_toolTipText != value)
@@ -348,7 +348,7 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2003
             if (RepeatClick && !(e is RepeatClickEventArgs))
                 return;
 
-            base.OnClick (e);
+            base.OnClick(e);
         }
 
         /// <exclude/>
@@ -497,7 +497,7 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2003
                 else
                     g.DrawImage(image, pts, rect, GraphicsUnit.Pixel, imageAttr);
             }
-        }    
+        }
 
         private void DrawText(Graphics g)
         {

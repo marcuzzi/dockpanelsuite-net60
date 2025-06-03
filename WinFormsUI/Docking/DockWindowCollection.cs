@@ -16,7 +16,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             Items.Add(dockPanel.Theme.Extender.DockWindowFactory.CreateDockWindow(dockPanel, DockState.DockBottom));
         }
 
-        public DockWindow this [DockState dockState]
+        public DockWindow this[DockState dockState]
         {
             get
             {

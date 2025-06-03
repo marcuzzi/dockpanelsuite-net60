@@ -209,7 +209,7 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2013
                 if (m_buttonOverflow == null)
                 {
                     m_buttonOverflow = new InertButton(
-                        DockPane.DockPanel.Theme.ImageService.DockPaneHover_OptionOverflow, 
+                        DockPane.DockPanel.Theme.ImageService.DockPaneHover_OptionOverflow,
                         DockPane.DockPanel.Theme.ImageService.DockPane_OptionOverflow,
                         DockPane.DockPanel.Theme.ImageService.DockPanePress_OptionOverflow);
                     m_buttonOverflow.Click += new EventHandler(WindowList_Click);
@@ -546,7 +546,7 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2013
             if (DockPane.IsAutoHide || Tabs.Count <= 1)
                 return 0;
 
-            int height = Math.Max(TextFont.Height + (PatchController.EnableHighDpi == true ? DocumentIconGapBottom : 0), 
+            int height = Math.Max(TextFont.Height + (PatchController.EnableHighDpi == true ? DocumentIconGapBottom : 0),
                 ToolWindowImageHeight + ToolWindowImageGapTop + ToolWindowImageGapBottom)
                 + ToolWindowStripGapTop + ToolWindowStripGapBottom;
 
@@ -667,7 +667,7 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2013
             int totalAllocatedWidth = 0;
             int averageWidth = totalWidth / countTabs;
             int remainedTabs = countTabs;
-            for (anyWidthWithinAverage = true; anyWidthWithinAverage && remainedTabs > 0; )
+            for (anyWidthWithinAverage = true; anyWidthWithinAverage && remainedTabs > 0;)
             {
                 anyWidthWithinAverage = false;
                 foreach (TabVS2013 tab in Tabs)
@@ -1081,7 +1081,7 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2013
                 g.DrawLine(DockPane.DockPanel.Theme.PaintingService.GetPen(borderColor), rect.Left, rect.Top,
                     rect.Left, rect.Bottom);
                 g.DrawLine(DockPane.DockPanel.Theme.PaintingService.GetPen(borderColor), rect.Left, rect.Bottom - 1,
-                    rect.Right, rect.Bottom -1);
+                    rect.Right, rect.Bottom - 1);
                 g.DrawLine(DockPane.DockPanel.Theme.PaintingService.GetPen(borderColor), rect.Right - 1, rect.Top,
                     rect.Right - 1, rect.Bottom);
                 TextRenderer.DrawText(g, tab.Content.DockHandler.TabText, TextFont, rectText, textColor, ToolWindowTextFormat);

@@ -54,7 +54,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected virtual StringFormat StringFormatTabHorizontal
         {
             get
-            {	
+            {
                 if (_stringFormatTabHorizontal == null)
                 {
                     _stringFormatTabHorizontal = new StringFormat();
@@ -71,7 +71,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected virtual StringFormat StringFormatTabVertical
         {
             get
-            {	
+            {
                 if (_stringFormatTabVertical == null)
                 {
                     _stringFormatTabVertical = new StringFormat();
@@ -86,96 +86,96 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// <include file='CodeDoc/AutoHideStripVS2003.xml' path='//CodeDoc/Class[@name="AutoHideStripVS2003"]/Property[@name="ImageHeight"]/*'/>
         protected virtual int ImageHeight
         {
-            get	{	return _ImageHeight;	}
+            get { return _ImageHeight; }
         }
 
         /// <include file='CodeDoc/AutoHideStripVS2003.xml' path='//CodeDoc/Class[@name="AutoHideStripVS2003"]/Property[@name="ImageWidth"]/*'/>
         protected virtual int ImageWidth
         {
-            get	{	return _ImageWidth;	}
+            get { return _ImageWidth; }
         }
 
         /// <include file='CodeDoc/AutoHideStripVS2003.xml' path='//CodeDoc/Class[@name="AutoHideStripVS2003"]/Property[@name="ImageGapTop"]/*'/>
         protected virtual int ImageGapTop
         {
-            get	{	return _ImageGapTop;	}
+            get { return _ImageGapTop; }
         }
 
         /// <include file='CodeDoc/AutoHideStripVS2003.xml' path='//CodeDoc/Class[@name="AutoHideStripVS2003"]/Property[@name="ImageGapLeft"]/*'/>
         protected virtual int ImageGapLeft
         {
-            get	{	return _ImageGapLeft;	}
+            get { return _ImageGapLeft; }
         }
 
         /// <include file='CodeDoc/AutoHideStripVS2003.xml' path='//CodeDoc/Class[@name="AutoHideStripVS2003"]/Property[@name="ImageGapRight"]/*'/>
         protected virtual int ImageGapRight
         {
-            get	{	return _ImageGapRight;	}
+            get { return _ImageGapRight; }
         }
 
         /// <include file='CodeDoc/AutoHideStripVS2003.xml' path='//CodeDoc/Class[@name="AutoHideStripVS2003"]/Property[@name="ImageGapBottom"]/*'/>
         protected virtual int ImageGapBottom
         {
-            get	{	return _ImageGapBottom;	}
+            get { return _ImageGapBottom; }
         }
 
         /// <include file='CodeDoc/AutoHideStripVS2003.xml' path='//CodeDoc/Class[@name="AutoHideStripVS2003"]/Property[@name="TextGapLeft"]/*'/>
         protected virtual int TextGapLeft
         {
-            get	{	return _TextGapLeft;	}
+            get { return _TextGapLeft; }
         }
 
         /// <include file='CodeDoc/AutoHideStripVS2003.xml' path='//CodeDoc/Class[@name="AutoHideStripVS2003"]/Property[@name="TextGapRight"]/*'/>
         protected virtual int TextGapRight
         {
-            get	{	return _TextGapRight;	}
+            get { return _TextGapRight; }
         }
 
         /// <include file='CodeDoc/AutoHideStripVS2003.xml' path='//CodeDoc/Class[@name="AutoHideStripVS2003"]/Property[@name="TabGapTop"]/*'/>
         protected virtual int TabGapTop
         {
-            get	{	return _TabGapTop;	}
+            get { return _TabGapTop; }
         }
 
         /// <include file='CodeDoc/AutoHideStripVS2003.xml' path='//CodeDoc/Class[@name="AutoHideStripVS2003"]/Property[@name="TabGapLeft"]/*'/>
         protected virtual int TabGapLeft
         {
-            get	{	return _TabGapLeft;	}
+            get { return _TabGapLeft; }
         }
 
         /// <include file='CodeDoc/AutoHideStripVS2003.xml' path='//CodeDoc/Class[@name="AutoHideStripVS2003"]/Property[@name="TabGapBetween"]/*'/>
         protected virtual int TabGapBetween
         {
-            get	{	return _TabGapBetween;	}
+            get { return _TabGapBetween; }
         }
 
         /// <include file='CodeDoc/AutoHideStripVS2003.xml' path='//CodeDoc/Class[@name="AutoHideStripVS2003"]/Property[@name="BrushTabBackground"]/*'/>
         protected virtual Brush BrushTabBackground
         {
-            get	{	return SystemBrushes.Control;	}
+            get { return SystemBrushes.Control; }
         }
 
         /// <include file='CodeDoc/AutoHideStripVS2003.xml' path='//CodeDoc/Class[@name="AutoHideStripVS2003"]/Property[@name="PenTabBorder"]/*'/>
         protected virtual Pen PenTabBorder
         {
-            get	{	return SystemPens.GrayText;	}
+            get { return SystemPens.GrayText; }
         }
 
         /// <include file='CodeDoc/AutoHideStripVS2003.xml' path='//CodeDoc/Class[@name="AutoHideStripVS2003"]/Property[@name="BrushTabText"]/*'/>
         protected virtual Brush BrushTabText
         {
-            get	{	return SystemBrushes.FromSystemColor(SystemColors.ControlDarkDark);	}
+            get { return SystemBrushes.FromSystemColor(SystemColors.ControlDarkDark); }
         }
         #endregion
 
         private Matrix MatrixIdentity
         {
-            get	{	return _matrixIdentity;	}
+            get { return _matrixIdentity; }
         }
 
         private DockState[] DockStates
         {
-            get	{	return _dockStates;	}
+            get { return _dockStates; }
         }
 
         static VS2003AutoHideStrip()
@@ -209,7 +209,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected override void OnLayout(LayoutEventArgs levent)
         {
             CalculateTabs();
-            base.OnLayout (levent);
+            base.OnLayout(levent);
         }
 
         private void DrawTabStrip(Graphics g)
@@ -259,7 +259,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             int imageHeight = rectTabStrip.Height - ImageGapTop - ImageGapBottom;
             int imageWidth = ImageWidth;
             if (imageHeight > ImageHeight)
-                imageWidth = ImageWidth * (imageHeight/ImageHeight);
+                imageWidth = ImageWidth * (imageHeight / ImageHeight);
 
             using (Graphics g = CreateGraphics())
             {
@@ -298,7 +298,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             DockState dockState = tab.Content.DockHandler.DockState;
             IDockContent content = tab.Content;
-            
+
             OnBeginDrawTab(tab);
 
             Brush brushTabBackGround = BrushTabBackground;
@@ -325,7 +325,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             int imageHeight = rectTab.Height - ImageGapTop - ImageGapBottom;
             int imageWidth = ImageWidth;
             if (imageHeight > ImageHeight)
-                imageWidth = ImageWidth * (imageHeight/ImageHeight);
+                imageWidth = ImageWidth * (imageHeight / ImageHeight);
             rectImage.Height = imageHeight;
             rectImage.Width = imageWidth;
             rectImage = GetTransformedRectangle(dockState, rectImage);
@@ -372,7 +372,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             {
                 x = 0;
                 y = (topPanes == 0) ? 0 : height;
-                width = Height - (topPanes == 0 ? 0 : height) - (bottomPanes == 0 ? 0 :height);
+                width = Height - (topPanes == 0 ? 0 : height) - (bottomPanes == 0 ? 0 : height);
             }
             else if (dockState == DockState.DockRightAutoHide && rightPanes > 0)
             {
@@ -380,7 +380,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                 if (leftPanes != 0 && x < height)
                     x = height;
                 y = (topPanes == 0) ? 0 : height;
-                width = Height - (topPanes == 0 ? 0 : height) - (bottomPanes == 0 ? 0 :height);
+                width = Height - (topPanes == 0 ? 0 : height) - (bottomPanes == 0 ? 0 : height);
             }
             else if (dockState == DockState.DockTopAutoHide && topPanes > 0)
             {
@@ -422,7 +422,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                 return Rectangle.Empty;
 
             int x = tab.TabX;
-            int y = rectTabStrip.Y + 
+            int y = rectTabStrip.Y +
                 (dockState == DockState.DockTopAutoHide || dockState == DockState.DockRightAutoHide ?
                 0 : TabGapTop);
             int width = tab.TabWidth;
@@ -459,15 +459,15 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// <exclude />
         protected override IDockContent HitTest(Point point)
         {
-            foreach(DockState state in DockStates)
+            foreach (DockState state in DockStates)
             {
                 Rectangle rectTabStrip = GetLogicalTabStripRectangle(state, true);
                 if (!rectTabStrip.Contains(point))
                     continue;
 
-                foreach(Pane pane in GetPanes(state))
+                foreach (Pane pane in GetPanes(state))
                 {
-                    foreach(TabVS2003 tab in pane.AutoHideTabs)
+                    foreach (TabVS2003 tab in pane.AutoHideTabs)
                     {
                         Rectangle rectTab = GetTabRectangle(tab, true);
                         rectTab.Intersect(rectTabStrip);
@@ -476,7 +476,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                     }
                 }
             }
-            
+
             return null;
         }
 

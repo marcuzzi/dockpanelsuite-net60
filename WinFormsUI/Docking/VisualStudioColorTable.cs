@@ -120,7 +120,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         //{
         //    get { return ButtonSelectedBorder; }
         //}
-        
+
         public override Color ButtonSelectedBorder
         {
             get { return _palette.CommandBarToolbarButtonChecked.Border; }

@@ -30,11 +30,11 @@ namespace WeifenLuo.WinFormsUI.Docking
             {
                 if (m_buttonClose == null)
                 {
-                    m_buttonClose = new VS2012DockPaneCaptionInertButton(this, 
-                        DockPane.DockPanel.Theme.ImageService.DockPaneHover_Close, 
+                    m_buttonClose = new VS2012DockPaneCaptionInertButton(this,
+                        DockPane.DockPanel.Theme.ImageService.DockPaneHover_Close,
                         DockPane.DockPanel.Theme.ImageService.DockPane_Close,
                         DockPane.DockPanel.Theme.ImageService.DockPanePress_Close,
-                        DockPane.DockPanel.Theme.ImageService.DockPaneActiveHover_Close, 
+                        DockPane.DockPanel.Theme.ImageService.DockPaneActiveHover_Close,
                         DockPane.DockPanel.Theme.ImageService.DockPaneActive_Close);
                     m_toolTip.SetToolTip(m_buttonClose, ToolTipClose);
                     m_buttonClose.Click += new EventHandler(Close_Click);
@@ -52,13 +52,13 @@ namespace WeifenLuo.WinFormsUI.Docking
             {
                 if (m_buttonAutoHide == null)
                 {
-                    m_buttonAutoHide = new VS2012DockPaneCaptionInertButton(this, 
-                        DockPane.DockPanel.Theme.ImageService.DockPaneHover_Dock, 
+                    m_buttonAutoHide = new VS2012DockPaneCaptionInertButton(this,
+                        DockPane.DockPanel.Theme.ImageService.DockPaneHover_Dock,
                         DockPane.DockPanel.Theme.ImageService.DockPane_Dock,
                         DockPane.DockPanel.Theme.ImageService.DockPanePress_Dock,
-                        DockPane.DockPanel.Theme.ImageService.DockPaneActiveHover_Dock, 
+                        DockPane.DockPanel.Theme.ImageService.DockPaneActiveHover_Dock,
                         DockPane.DockPanel.Theme.ImageService.DockPaneActive_Dock,
-                        DockPane.DockPanel.Theme.ImageService.DockPaneActiveHover_AutoHide, 
+                        DockPane.DockPanel.Theme.ImageService.DockPaneActiveHover_AutoHide,
                         DockPane.DockPanel.Theme.ImageService.DockPaneActive_AutoHide,
                         DockPane.DockPanel.Theme.ImageService.DockPanePress_AutoHide);
                     m_toolTip.SetToolTip(m_buttonAutoHide, ToolTipAutoHide);
@@ -77,11 +77,11 @@ namespace WeifenLuo.WinFormsUI.Docking
             {
                 if (m_buttonOptions == null)
                 {
-                    m_buttonOptions = new VS2012DockPaneCaptionInertButton(this, 
-                        DockPane.DockPanel.Theme.ImageService.DockPaneHover_Option, 
+                    m_buttonOptions = new VS2012DockPaneCaptionInertButton(this,
+                        DockPane.DockPanel.Theme.ImageService.DockPaneHover_Option,
                         DockPane.DockPanel.Theme.ImageService.DockPane_Option,
                         DockPane.DockPanel.Theme.ImageService.DockPanePress_Option,
-                        DockPane.DockPanel.Theme.ImageService.DockPaneActiveHover_Option, 
+                        DockPane.DockPanel.Theme.ImageService.DockPaneActiveHover_Option,
                         DockPane.DockPanel.Theme.ImageService.DockPaneActive_Option);
                     m_toolTip.SetToolTip(m_buttonOptions, ToolTipOptions);
                     m_buttonOptions.Click += new EventHandler(Options_Click);
@@ -125,7 +125,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         private static string ToolTipClose
         {
             get
-            {	
+            {
                 if (_toolTipClose == null)
                     _toolTipClose = WeifenLuo.WinFormsUI.ThemeVS2012.Strings.DockPaneCaption_ToolTipClose;
                 return _toolTipClose;
@@ -148,7 +148,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         private static string ToolTipAutoHide
         {
             get
-            {	
+            {
                 if (_toolTipAutoHide == null)
                     _toolTipAutoHide = WeifenLuo.WinFormsUI.ThemeVS2012.Strings.DockPaneCaption_ToolTipAutoHide;
                 return _toolTipAutoHide;
@@ -193,7 +193,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint (e);
+            base.OnPaint(e);
             DrawCaption(e.Graphics);
         }
 
@@ -268,7 +268,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected override void OnLayout(LayoutEventArgs levent)
         {
             SetButtonsPosition();
-            base.OnLayout (levent);
+            base.OnLayout(levent);
         }
 
         protected override void OnRefreshChanges()
@@ -279,7 +279,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         private bool CloseButtonEnabled
         {
-            get	{ return (DockPane.ActiveContent != null) ? DockPane.ActiveContent.DockHandler.CloseButton : false; }
+            get { return (DockPane.ActiveContent != null) ? DockPane.ActiveContent.DockHandler.CloseButton : false; }
         }
 
         /// <summary>
@@ -292,7 +292,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         private bool ShouldShowAutoHideButton
         {
-            get	{ return !DockPane.IsFloat; }
+            get { return !DockPane.IsFloat; }
         }
 
         private void SetButtons()
@@ -304,7 +304,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             ButtonClose.RefreshChanges();
             ButtonAutoHide.RefreshChanges();
             ButtonOptions.RefreshChanges();
-            
+
             SetButtonsPosition();
         }
 
@@ -325,7 +325,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             // Otherwise it is drawn to the left of the close button.
             if (CloseButtonVisible)
                 point.Offset(-(buttonWidth + ButtonGapBetween), 0);
-            
+
             ButtonAutoHide.Bounds = DrawHelper.RtlTransform(this, new Rectangle(point, buttonSize));
             if (ShouldShowAutoHideButton)
                 point.Offset(-(buttonWidth + ButtonGapBetween), 0);

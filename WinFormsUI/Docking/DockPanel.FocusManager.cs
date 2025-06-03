@@ -166,7 +166,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                         sm_localWindowsHook.Dispose();
                         sm_localWindowsHook = null;
                     }
-					
+
                     m_disposed = true;
                 }
 

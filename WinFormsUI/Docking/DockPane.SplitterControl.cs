@@ -121,7 +121,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             #endregion
         }
-        
+
         private SplitterControlBase m_splitter;
         private SplitterControlBase Splitter
         {

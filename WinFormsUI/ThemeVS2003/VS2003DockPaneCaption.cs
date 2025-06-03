@@ -44,7 +44,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             m_buttonAutoHide.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             m_buttonAutoHide.Click += new EventHandler(AutoHide_Click);
 
-            Controls.AddRange(new Control[]	{	m_buttonClose, m_buttonAutoHide });
+            Controls.AddRange(new Control[] { m_buttonClose, m_buttonAutoHide });
 
             ResumeLayout();
         }
@@ -53,55 +53,55 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="TextGapTop"]/*'/>
         protected virtual int TextGapTop
         {
-            get	{	return _TextGapTop;	}
+            get { return _TextGapTop; }
         }
 
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="TextGapBottom"]/*'/>
         protected virtual int TextGapBottom
         {
-            get	{	return _TextGapBottom;	}
+            get { return _TextGapBottom; }
         }
 
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="TextGapLeft"]/*'/>
         protected virtual int TextGapLeft
         {
-            get	{	return _TextGapLeft;	}
+            get { return _TextGapLeft; }
         }
 
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="TextGapRight"]/*'/>
         protected virtual int TextGapRight
         {
-            get	{	return _TextGapRight;	}
+            get { return _TextGapRight; }
         }
 
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="ButtonGapTop"]/*'/>
         protected virtual int ButtonGapTop
         {
-            get	{	return _ButtonGapTop;	}
+            get { return _ButtonGapTop; }
         }
 
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="ButtonGapBottom"]/*'/>
         protected virtual int ButtonGapBottom
         {
-            get	{	return _ButtonGapBottom;	}
+            get { return _ButtonGapBottom; }
         }
 
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="ButtonGapLeft"]/*'/>
         protected virtual int ButtonGapLeft
         {
-            get	{	return _ButtonGapLeft;	}
+            get { return _ButtonGapLeft; }
         }
 
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="ButtonGapRight"]/*'/>
         protected virtual int ButtonGapRight
         {
-            get	{	return _ButtonGapRight;	}
+            get { return _ButtonGapRight; }
         }
 
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="ButtonGapBetween"]/*'/>
         protected virtual int ButtonGapBetween
         {
-            get	{	return _ButtonGapBetween;	}
+            get { return _ButtonGapBetween; }
         }
 
         private static Image _imageCloseEnabled = null;
@@ -109,7 +109,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected virtual Image ImageCloseEnabled
         {
             get
-            {	
+            {
                 if (_imageCloseEnabled == null)
                     _imageCloseEnabled = Resources.DockPaneCaption_CloseEnabled;
                 return _imageCloseEnabled;
@@ -121,7 +121,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected virtual Image ImageCloseDisabled
         {
             get
-            {	
+            {
                 if (_imageCloseDisabled == null)
                     _imageCloseDisabled = Resources.DockPaneCaption_CloseDisabled;
                 return _imageCloseDisabled;
@@ -133,7 +133,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected virtual Image ImageAutoHideYes
         {
             get
-            {	
+            {
                 if (_imageAutoHideYes == null)
                     _imageAutoHideYes = Resources.DockPaneCaption_AutoHideYes;
                 return _imageAutoHideYes;
@@ -145,7 +145,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected virtual Image ImageAutoHideNo
         {
             get
-            {	
+            {
                 if (_imageAutoHideNo == null)
                     _imageAutoHideNo = Resources.DockPaneCaption_AutoHideNo;
                 return _imageAutoHideNo;
@@ -157,7 +157,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected virtual string ToolTipClose
         {
             get
-            {	
+            {
                 if (_toolTipClose == null)
                     _toolTipClose = WeifenLuo.WinFormsUI.ThemeVS2003.Strings.DockPaneCaption_ToolTipClose;
                 return _toolTipClose;
@@ -169,7 +169,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected virtual string ToolTipAutoHide
         {
             get
-            {	
+            {
                 if (_toolTipAutoHide == null)
                     _toolTipAutoHide = WeifenLuo.WinFormsUI.ThemeVS2003.Strings.DockPaneCaption_ToolTipAutoHide;
                 return _toolTipAutoHide;
@@ -179,43 +179,43 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="ActiveBackColor"]/*'/>
         protected virtual Color ActiveBackColor
         {
-            get	{	return SystemColors.ActiveCaption;	}
+            get { return SystemColors.ActiveCaption; }
         }
 
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="InactiveBackColor"]/*'/>
         protected virtual Color InactiveBackColor
         {
-            get	{	return SystemColors.Control;	}
+            get { return SystemColors.Control; }
         }
 
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="ActiveTextColor"]/*'/>
         protected virtual Color ActiveTextColor
         {
-            get	{	return SystemColors.ActiveCaptionText;	}
+            get { return SystemColors.ActiveCaptionText; }
         }
 
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="InactiveTextColor"]/*'/>
         protected virtual Color InactiveTextColor
         {
-            get	{	return SystemColors.ControlText;	}
+            get { return SystemColors.ControlText; }
         }
 
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="InactiveBorderColor"]/*'/>
         protected virtual Color InactiveBorderColor
         {
-            get	{	return SystemColors.GrayText; }
+            get { return SystemColors.GrayText; }
         }
 
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="ActiveButtonBorderColor"]/*'/>
         protected virtual Color ActiveButtonBorderColor
         {
-            get	{	return ActiveTextColor;	}
+            get { return ActiveTextColor; }
         }
 
         /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/Property[@name="InactiveButtonBorderColor"]/*'/>
         protected virtual Color InactiveButtonBorderColor
         {
-            get	{	return Color.Empty;	}
+            get { return Color.Empty; }
         }
 
         private static TextFormatFlags _textFormat =
@@ -247,7 +247,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// <exclude/>
         protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint (e);
+            base.OnPaint(e);
             DrawCaption(e.Graphics);
         }
 
@@ -275,11 +275,11 @@ namespace WeifenLuo.WinFormsUI.Docking
             rectCaptionText.X += TextGapLeft;
             if (ShouldShowCloseButton && ShouldShowAutoHideButton)
                 rectCaptionText.Width = rectCaption.Width - ButtonGapRight
-                    - ButtonGapLeft	- TextGapLeft - TextGapRight -
+                    - ButtonGapLeft - TextGapLeft - TextGapRight -
                     (m_buttonAutoHide.Width + ButtonGapBetween + m_buttonClose.Width);
             else if (ShouldShowCloseButton || ShouldShowAutoHideButton)
                 rectCaptionText.Width = rectCaption.Width - ButtonGapRight
-                    - ButtonGapLeft	- TextGapLeft - TextGapRight - m_buttonClose.Width;
+                    - ButtonGapLeft - TextGapLeft - TextGapRight - m_buttonClose.Width;
             else
                 rectCaptionText.Width = rectCaption.Width - TextGapLeft - TextGapRight;
             rectCaptionText.Y += TextGapTop;
@@ -291,7 +291,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected override void OnLayout(LayoutEventArgs levent)
         {
             SetButtonsPosition();
-            base.OnLayout (levent);
+            base.OnLayout(levent);
         }
 
         /// <exclude/>
@@ -303,12 +303,12 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         private bool ShouldShowCloseButton
         {
-            get	{	return (DockPane.ActiveContent != null)? DockPane.ActiveContent.DockHandler.CloseButton : false;	}
+            get { return (DockPane.ActiveContent != null) ? DockPane.ActiveContent.DockHandler.CloseButton : false; }
         }
 
         private bool ShouldShowAutoHideButton
         {
-            get	{	return !DockPane.IsFloat;	}
+            get { return !DockPane.IsFloat; }
         }
 
         private void SetButtons()
@@ -316,7 +316,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             m_buttonClose.Visible = ShouldShowCloseButton;
             m_buttonAutoHide.Visible = ShouldShowAutoHideButton;
             m_buttonAutoHide.ImageEnabled = DockPane.IsAutoHide ? ImageAutoHideYes : ImageAutoHideNo;
-            
+
             SetButtonsPosition();
         }
 

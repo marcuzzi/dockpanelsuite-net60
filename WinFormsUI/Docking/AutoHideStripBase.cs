@@ -518,7 +518,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected override void OnLayout(LayoutEventArgs levent)
         {
             RefreshChanges();
-            base.OnLayout (levent);
+            base.OnLayout(levent);
         }
 
         internal void RefreshChanges()
@@ -600,7 +600,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                     case 0:
                         return new AutoHideStripAccessibleObject(_strip, DockState.DockTopAutoHide, this);
                     case 1:
-                        return new AutoHideStripAccessibleObject(_strip, DockState.DockBottomAutoHide, this);						
+                        return new AutoHideStripAccessibleObject(_strip, DockState.DockBottomAutoHide, this);
                     case 2:
                         return new AutoHideStripAccessibleObject(_strip, DockState.DockLeftAutoHide, this);
                     case 3:

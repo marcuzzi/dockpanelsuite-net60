@@ -1230,7 +1230,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                 paneFrom.DockState = pane.DockState;
             }
 
-            if(PatchController.EnableActivateOnDockFix == true)
+            if (PatchController.EnableActivateOnDockFix == true)
                 Pane.ActiveContent = Content;
         }
 

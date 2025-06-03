@@ -27,7 +27,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         {
             DockPane.SplitterControlBase CreateSplitterControl(DockPane pane);
         }
-        
+
         public interface IWindowSplitterControlFactory
         {
             SplitterBase CreateSplitterControl(ISplitterHost host);
@@ -201,7 +201,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         }
 
         private IAutoHideWindowFactory m_autoHideWindowFactory;
-        
+
         public IAutoHideWindowFactory AutoHideWindowFactory
         {
             get { return m_autoHideWindowFactory; }

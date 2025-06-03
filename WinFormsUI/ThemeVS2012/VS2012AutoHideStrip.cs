@@ -366,7 +366,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                 result.Width -= TextGapBottom;
                 return result;
             }
-            
+
             if (state == DockState.DockBottomAutoHide)
             {
                 result.X += TextGapLeft;

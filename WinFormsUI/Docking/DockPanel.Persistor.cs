@@ -233,9 +233,9 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             public static void SaveAsXml(DockPanel dockPanel, Stream stream, Encoding encoding, bool upstream)
             {
-                XmlWriter xmlOut = XmlWriter.Create(stream, new XmlWriterSettings() 
-                { 
-                    Encoding = encoding, 
+                XmlWriter xmlOut = XmlWriter.Create(stream, new XmlWriterSettings()
+                {
+                    Encoding = encoding,
                     Indent = true,
                     OmitXmlDeclaration = upstream
                 });

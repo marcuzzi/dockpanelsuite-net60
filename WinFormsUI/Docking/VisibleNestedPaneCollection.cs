@@ -16,28 +16,28 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         public NestedPaneCollection NestedPanes
         {
-            get	{	return m_nestedPanes;	}
+            get { return m_nestedPanes; }
         }
 
         public INestedPanesContainer Container
         {
-            get	{	return NestedPanes.Container;	}
+            get { return NestedPanes.Container; }
         }
 
         public DockState DockState
         {
-            get	{	return NestedPanes.DockState;	}
+            get { return NestedPanes.DockState; }
         }
 
         public bool IsFloat
         {
-            get	{	return NestedPanes.IsFloat;	}
+            get { return NestedPanes.IsFloat; }
         }
 
         internal void Refresh()
         {
             Items.Clear();
-            for (int i=0; i<NestedPanes.Count; i++)
+            for (int i = 0; i < NestedPanes.Count; i++)
             {
                 DockPane pane = NestedPanes[i];
                 NestedDockingStatus status = pane.NestedDockingStatus;
@@ -71,7 +71,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             NestedDockingStatus statusPane = pane.NestedDockingStatus;
             DockPane lastNestedPane = null;
-            for (int i=Count - 1; i> IndexOf(pane); i--)
+            for (int i = Count - 1; i > IndexOf(pane); i--)
             {
                 if (PatchController.EnableDisplayingPaneFix == true)
                 {
@@ -98,7 +98,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                 Items[IndexOf(pane)] = lastNestedPane;
                 NestedDockingStatus lastNestedDock = lastNestedPane.NestedDockingStatus;
                 lastNestedDock.SetDisplayingStatus(true, statusPane.DisplayingPreviousPane, statusPane.DisplayingAlignment, statusPane.DisplayingProportion);
-                for (int i=indexLastNestedPane - 1; i>IndexOf(lastNestedPane); i--)
+                for (int i = indexLastNestedPane - 1; i > IndexOf(lastNestedPane); i--)
                 {
                     NestedDockingStatus status = this[i].NestedDockingStatus;
                     if (PatchController.EnableDisplayingPaneFix == true)
@@ -126,7 +126,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             this[0].NestedDockingStatus.SetDisplayingBounds(Container.DisplayingRectangle, Container.DisplayingRectangle, Rectangle.Empty);
 
-            for (int i=1; i<Count; i++)
+            for (int i = 1; i < Count; i++)
             {
                 DockPane pane = this[i];
                 NestedDockingStatus status = pane.NestedDockingStatus;

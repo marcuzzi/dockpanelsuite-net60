@@ -318,7 +318,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                 }
 
                 // start the timer
-                int hovertime = SystemInformation.MouseHoverTime ;
+                int hovertime = SystemInformation.MouseHoverTime;
 
                 // assign a default value 400 in case of setting Timer.Interval invalid value exception
                 if (hovertime <= 0)

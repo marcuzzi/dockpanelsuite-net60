@@ -45,7 +45,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         private DockPanelGradient m_dockStripGradient = new DockPanelGradient();
         private TabGradient m_TabGradient = new TabGradient();
         private DockStripBackground m_DockStripBackground = new DockStripBackground();
-        
+
         private Font m_textFont = SystemFonts.MenuFont;
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         private TabGradient m_activeTabGradient = new TabGradient();
         private TabGradient m_inactiveTabGradient = new TabGradient();
         private TabGradient m_hoverTabGradient = new TabGradient();
-        
+
 
         /// <summary>
         /// The gradient color skin for the DockStrip.
@@ -218,7 +218,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         }
     }
 
-        /// <summary>
+    /// <summary>
     /// The skin used to display the dock pane tab
     /// </summary>
     [TypeConverter(typeof(DockPaneTabGradientConverter))]
@@ -248,7 +248,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             set { m_endColor = value; }
         }
     }
-    
+
 
     /// <summary>
     /// The gradient color skin.

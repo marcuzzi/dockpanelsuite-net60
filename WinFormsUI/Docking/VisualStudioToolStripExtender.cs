@@ -13,7 +13,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             private VsVersion version = VsVersion.Unknown;
             private readonly ToolStrip strip;
             private readonly Dictionary<ToolStripItem, string> menuText = new Dictionary<ToolStripItem, string>();
-            
+
 
             public ToolStripProperties(ToolStrip toolstrip)
             {
@@ -24,7 +24,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                     SaveMenuStripText();
             }
 
-            public VsVersion VsVersion 
+            public VsVersion VsVersion
             {
                 get { return this.version; }
                 set

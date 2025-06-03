@@ -11,14 +11,14 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         public static void Reset()
         {
-            EnableAll = _highDpi = _memoryLeakFix 
+            EnableAll = _highDpi = _memoryLeakFix
                 = _nestedDisposalFix = _focusLostFix = _contentOrderFix
                 = _fontInheritanceFix = _activeXFix = _displayingPaneFix
                 = _activeControlFix = _floatSplitterFix = _activateOnDockFix
                 = _selectClosestOnClose = _perScreenDpi = null;
         }
 
-#region Copy this section to create new option, and then comment it to show what needs to be modified.
+        #region Copy this section to create new option, and then comment it to show what needs to be modified.
         //*
         private static bool? _highDpi;
 
@@ -98,7 +98,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             }
         }
         // */
-#endregion
+        #endregion
 
         private static bool? _memoryLeakFix;
 

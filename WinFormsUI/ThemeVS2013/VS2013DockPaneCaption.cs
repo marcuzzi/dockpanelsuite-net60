@@ -125,7 +125,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         private static string ToolTipClose
         {
             get
-            {	
+            {
                 if (_toolTipClose == null)
                     _toolTipClose = WeifenLuo.WinFormsUI.ThemeVS2012.Strings.DockPaneCaption_ToolTipClose;
                 return _toolTipClose;
@@ -148,7 +148,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         private static string ToolTipAutoHide
         {
             get
-            {	
+            {
                 if (_toolTipAutoHide == null)
                     _toolTipAutoHide = WeifenLuo.WinFormsUI.ThemeVS2012.Strings.DockPaneCaption_ToolTipAutoHide;
                 return _toolTipAutoHide;
@@ -193,7 +193,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint (e);
+            base.OnPaint(e);
             DrawCaption(e.Graphics);
         }
 
@@ -267,7 +267,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected override void OnLayout(LayoutEventArgs levent)
         {
             SetButtonsPosition();
-            base.OnLayout (levent);
+            base.OnLayout(levent);
         }
 
         protected override void OnRefreshChanges()
@@ -278,7 +278,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         private bool CloseButtonEnabled
         {
-            get	{	return (DockPane.ActiveContent != null)? DockPane.ActiveContent.DockHandler.CloseButton : false;	}
+            get { return (DockPane.ActiveContent != null) ? DockPane.ActiveContent.DockHandler.CloseButton : false; }
         }
 
         /// <summary>
@@ -291,7 +291,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         private bool ShouldShowAutoHideButton
         {
-            get	{	return !DockPane.IsFloat;	}
+            get { return !DockPane.IsFloat; }
         }
 
         private void SetButtons()
@@ -303,7 +303,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             ButtonClose.RefreshChanges();
             ButtonAutoHide.RefreshChanges();
             ButtonOptions.RefreshChanges();
-            
+
             SetButtonsPosition();
         }
 
@@ -324,7 +324,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             // Otherwise it is drawn to the left of the close button.
             if (CloseButtonVisible)
                 point.Offset(-(buttonWidth + ButtonGapBetween), 0);
-            
+
             ButtonAutoHide.Bounds = DrawHelper.RtlTransform(this, new Rectangle(point, buttonSize));
             if (ShouldShowAutoHideButton)
                 point.Offset(-(buttonWidth + ButtonGapBetween), 0);

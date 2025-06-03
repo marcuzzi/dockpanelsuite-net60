@@ -11,7 +11,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 {
     public abstract class DockPaneStripBase : Control
     {
-        [SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]        
+        [SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
         protected internal class Tab : IDisposable
         {
             private IDockContent m_content;
@@ -67,7 +67,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             }
         }
 
-        [SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]        
+        [SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
         protected sealed class TabCollection : IEnumerable<Tab>
         {
             #region IEnumerable Members
@@ -237,7 +237,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         {
             base.OnMouseMove(e);
 
-            if (e.Button != MouseButtons.Left || _dragBox.Contains(e.Location)) 
+            if (e.Button != MouseButtons.Left || _dragBox.Contains(e.Location))
                 return;
 
             if (DockPane.ActiveContent == null)
@@ -278,8 +278,8 @@ namespace WeifenLuo.WinFormsUI.Docking
             {
                 index = index - 1;
 
-                if (index >= 0 || index < Tabs.Count)                
-                    DockPane.ActiveContent = Tabs[index].Content;                
+                if (index >= 0 || index < Tabs.Count)
+                    DockPane.ActiveContent = Tabs[index].Content;
             }
         }
 
@@ -302,7 +302,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                 {
                     IDockContent content = Tabs[index].Content;
                     if (content.DockHandler.CheckDockState(!content.DockHandler.IsFloat) != DockState.Unknown)
-                        content.DockHandler.IsFloat = !content.DockHandler.IsFloat;	
+                        content.DockHandler.IsFloat = !content.DockHandler.IsFloat;
                 }
 
                 return;
@@ -442,6 +442,6 @@ namespace WeifenLuo.WinFormsUI.Docking
                 }
             }
         }
- 
+
     }
 }

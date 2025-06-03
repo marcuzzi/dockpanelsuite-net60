@@ -15,7 +15,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         public override string Description
         {
             get
-            {    
+            {
                 if (!m_initialized)
                 {
                     string key = base.Description;

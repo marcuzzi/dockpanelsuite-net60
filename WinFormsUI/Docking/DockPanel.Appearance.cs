@@ -12,7 +12,7 @@
         [Obsolete("Use Theme.Skin instead.")]
         public DockPanelSkin Skin
         {
-            get { return null;  }
+            get { return null; }
         }
 
         private ThemeBase m_dockPanelTheme = new DefaultTheme();
