@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Versioning;
 
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -10,6 +11,8 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: ComVisible(false)]
 
 [assembly: Guid("9d690ef9-ce19-4c69-874c-e24d8eb36aff")]
+
+[assembly: SupportedOSPlatform("windows")]
 
 [module: SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", Scope = "namespace", Target = "WeifenLuo.WinFormsUI.Docking", MessageId = "Weifen")]
 [module: SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", Scope = "namespace", Target = "WeifenLuo.WinFormsUI.Docking", MessageId = "Luo")]
