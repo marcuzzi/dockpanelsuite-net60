@@ -53,7 +53,6 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2012
         public ImageService(ThemeBase theme)
         {
             _palette = theme.ColorPalette;
-            Dockindicator_PaneDiamond_Hotspot = Resources.Dockindicator_PaneDiamond_Hotspot;
             DockIndicator_PaneDiamond_HotspotIndex = Resources.DockIndicator_PaneDiamond_HotspotIndex;
 
             var arrow = _palette.DockTarget.GlyphArrow;
@@ -137,6 +136,14 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2012
                     Dockindicator_PaneDiamond_Fill = ImageServiceHelper.CombineFive(five, bottom, center, left, right, top);
                 }
             }
+
+            // Make PaneDiamond Hotspot match Pane Diamond size
+            Dockindicator_PaneDiamond_Hotspot = Resources.Dockindicator_PaneDiamond_Hotspot;
+            int width = Dockindicator_PaneDiamond.Width;
+            int height = Dockindicator_PaneDiamond.Height;
+            bool rescale = (width != Dockindicator_PaneDiamond_Hotspot.Width) || (height != Dockindicator_PaneDiamond_Hotspot.Height);
+            if (rescale)
+                Dockindicator_PaneDiamond_Hotspot = ImageServiceHelper.ResizeBitmap(Resources.Dockindicator_PaneDiamond_Hotspot, width, height);
 
             TabActive_Close = ImageServiceHelper.GetImage(Resources.MaskTabClose, _palette.TabSelectedActive.Button, _palette.TabSelectedActive.Background);
             TabInactive_Close = ImageServiceHelper.GetImage(Resources.MaskTabClose, _palette.TabUnselectedHovered.Button, _palette.TabUnselectedHovered.Background);

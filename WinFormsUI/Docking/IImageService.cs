@@ -92,6 +92,17 @@ namespace WeifenLuo.WinFormsUI.Docking
             }
         }
 
+        public static Bitmap ResizeBitmap(Bitmap map, int width, int height)
+        {
+            Bitmap result = new Bitmap(width, height);
+            using (Graphics g = Graphics.FromImage(result))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.DrawImage(map, 0, 0, width, height);
+            }
+            return result;
+        }
+
         /// <summary>
         /// Scales a value according to current DPI settings.
         /// </summary>
@@ -219,59 +230,97 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// <returns></returns>
         public static Bitmap GetDockIcon(Bitmap maskArrow, Bitmap layerArrow, Bitmap maskWindow, Bitmap layerWindow, Bitmap maskBack, Color background, IPaintingService painting, Bitmap maskCore = null, Bitmap layerCore = null, Color? separator = null)
         {
-            var width = ScaleValue(maskBack.Width);
-            var height = ScaleValue(maskBack.Height);
-            var rect = new Rectangle(0, 0, width, height);
-            Bitmap arrowOut = null;
+            var width = ScaleValue(maskWindow.Width);
+            var height = ScaleValue(maskWindow.Height);
+            bool rescale = (width != maskWindow.Width || height != maskWindow.Height);
 
-            if (maskArrow != null)
+            // Window Contour bitmap
+            Bitmap windowOut = null;
+            if (rescale)
             {
-                Bitmap input = layerArrow;
-                arrowOut = MaskImages(input, maskArrow);
+                using var inputLayerWindow = ResizeBitmap(layerWindow, width, height);
+                using var inputMaskWindow = ResizeBitmap(maskWindow, width, height);
+                windowOut = MaskImages(inputLayerWindow, inputMaskWindow);
+            }
+            else
+            {
+                windowOut = MaskImages(layerWindow, maskWindow);
             }
 
-            Bitmap windowIn = layerWindow;
-            Bitmap windowOut = MaskImages(windowIn, maskWindow);
-
+            // Window Fill bitmap
             Bitmap coreOut = null;
             if (layerCore != null)
             {
-                var coreIn = layerCore;
-                coreOut = MaskImages(coreIn, maskCore);
+                if (rescale)
+                {
+                    using var inputLayerCore = ResizeBitmap(layerCore, width, height);
+                    using var inputMaskCore = ResizeBitmap(maskCore, width, height);
+                    coreOut = MaskImages(inputLayerCore, inputMaskCore);
+                }
+                else
+                {
+                    coreOut = MaskImages(layerCore, maskCore);
+                }
             }
 
-            Bitmap backIn = new Bitmap(width, height);
-            using (Graphics gfx = Graphics.FromImage(backIn))
+            // Complete background bitmap: Background + window contour + window fill + separator
+            Bitmap backOut = null;
+            using (var inputBack = new Bitmap(width, height))
             {
-                SolidBrush brush = painting.GetBrush(background);
-                gfx.FillRectangle(brush, 0, 0, width, height);
-                DrawImageDpiAware(gfx, windowOut, 0, 0);
-                windowOut.Dispose();
-                if (layerCore != null)
+                using (Graphics gfx = Graphics.FromImage(inputBack))
                 {
-                    DrawImageDpiAware(gfx, coreOut, 0, 0);
-                    coreOut.Dispose();
-                }
+                    SolidBrush brush = painting.GetBrush(background);
+                    gfx.FillRectangle(brush, 0, 0, width, height);
+                    gfx.DrawImageUnscaled(windowOut, 0, 0);
+                    windowOut.Dispose();
+                    if (layerCore != null)
+                    {
+                        gfx.DrawImageUnscaled(coreOut, 0, 0);
+                        coreOut.Dispose();
+                    }
 
-                if (separator != null)
+                    if (separator != null)
+                    {
+                        Pen sep = painting.GetPen(separator.Value);
+                        gfx.DrawRectangle(sep, 0, 0, width - 1, height - 1);
+                    }
+                }
+                if (rescale)
                 {
-                    Pen sep = painting.GetPen(separator.Value);
-                    gfx.DrawRectangle(sep, 0, 0, width - 1, height - 1);
+                    using var inputMaskBack = ResizeBitmap(maskBack, width, height);
+                    backOut = MaskImages(inputBack, inputMaskBack);
+                }
+                else
+                {
+                    backOut = MaskImages(inputBack, maskBack);
                 }
             }
 
-            Bitmap backOut = MaskImages(backIn, maskBack);
-            backIn.Dispose();
+            // Arrow bitmap
+            Bitmap arrowOut = null;
+            if (maskArrow != null)
+            {
+                if (rescale)
+                {
+                    using var inputLayerArrow = ResizeBitmap(layerArrow, width, height);
+                    using var inputMaskArrow = ResizeBitmap(maskArrow, width, height);
+                    arrowOut = MaskImages(inputLayerArrow, inputMaskArrow);
+                }
+                else
+                {
+                    arrowOut = MaskImages(layerArrow, maskArrow);
+                }
+            }
 
+            // Output bitmap: background + arrow
             using (Graphics gfx = Graphics.FromImage(backOut))
             {
                 if (arrowOut != null)
                 {
-                    DrawImageDpiAware(gfx, arrowOut, 0, 0);
+                    gfx.DrawImageUnscaled(arrowOut, 0, 0);
                     arrowOut.Dispose();
                 }
             }
-
             return backOut;
         }
 
@@ -289,7 +338,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                 for (int y = 0; y < height; y++)
                 {
                     byte* ptrMask = (byte*)bitsMask.Scan0 + y * bitsMask.Stride;
-                    byte* ptrInput = (byte*)bitsInput.Scan0 + y * bitsInput.Stride;
+                    byte* ptrInput = (byte*)bitsInput.Scan0 + y* bitsInput.Stride;
                     byte* ptrOutput = (byte*)bitsOutput.Scan0 + y * bitsOutput.Stride;
                     for (int x = 0; x < width; x++)
                     {
@@ -315,22 +364,21 @@ namespace WeifenLuo.WinFormsUI.Docking
             {
                 gfx.DrawImage(icon, offset, offset);
             }
-
             return result;
         }
 
         public static Bitmap CombineFive(Bitmap five, Bitmap bottom, Bitmap center, Bitmap left, Bitmap right, Bitmap top)
         {
             var result = new Bitmap(five);
-            var cell = (result.Width - ScaleValue(bottom.Width)) / 2;
-            var offset = (cell - ScaleValue(bottom.Width)) / 2;
+            var cell = (result.Width - bottom.Width) / 2;
+            var offset = (cell - bottom.Width) / 2;
             using (var gfx = Graphics.FromImage(result))
             {
-                DrawImageDpiAware(gfx, top, cell, offset);
-                DrawImageDpiAware(gfx, center, cell, cell);
-                DrawImageDpiAware(gfx, bottom, cell, 2 * cell - offset);
-                DrawImageDpiAware(gfx, left, offset, cell);
-                DrawImageDpiAware(gfx, right, 2 * cell - offset, cell);
+                gfx.DrawImageUnscaled(top, cell, offset);
+                gfx.DrawImageUnscaled(center, cell, cell);
+                gfx.DrawImageUnscaled(bottom, cell, 2 * cell - offset);
+                gfx.DrawImageUnscaled(left, offset, cell);
+                gfx.DrawImageUnscaled(right, 2 * cell - offset, cell);
             }
 
             return result;
@@ -339,7 +387,9 @@ namespace WeifenLuo.WinFormsUI.Docking
         public static Bitmap GetFiveBackground(Bitmap mask, Color innerBorder, Color outerBorder, IPaintingService painting)
         {
             // TODO: calculate points using functions.
-            using (var input = GetLayerImage(innerBorder, ScaleValue(mask.Width), painting))
+            int scaledWidth = ScaleValue(mask.Width);
+            bool rescale = (scaledWidth != mask.Width);
+            using (var input = GetLayerImage(innerBorder, scaledWidth, painting))
             {
                 using (var gfx = Graphics.FromImage(input))
                 {
@@ -371,9 +421,18 @@ namespace WeifenLuo.WinFormsUI.Docking
                     gfx.DrawLine(pen2, new Point(ScaleValue(36), ScaleValue(86)), new Point(ScaleValue(25), ScaleValue(75)));
                 }
 
-                return MaskImages(input, mask);
+                Bitmap output = null;
+                if (rescale)
+                {
+                    using var scaledMask = ResizeBitmap(mask, scaledWidth, scaledWidth);
+                    output = MaskImages(input, scaledMask);
+                }
+                else
+                {
+                    output = MaskImages(input, mask);
+                }
+                return output;
             }
         }
     }
-
 }
