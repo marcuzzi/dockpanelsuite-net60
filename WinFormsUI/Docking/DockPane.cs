@@ -1,16 +1,15 @@
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Security.Permissions;
-using System.Diagnostics.CodeAnalysis;
 
 namespace WeifenLuo.WinFormsUI.Docking
 {
     [ToolboxItem(false)]
     public partial class DockPane : UserControl, IDockDragSource
     {
-        public enum AppearanceStyle
+public enum AppearanceStyle
         {
             ToolWindow,
             Document
@@ -37,7 +36,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         }
 
         private DockPaneCaptionBase m_captionControl;
-        private DockPaneCaptionBase CaptionControl
+        protected DockPaneCaptionBase CaptionControl
         {
             get { return m_captionControl; }
         }
@@ -403,7 +402,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             get { return m_dockPanel; }
         }
 
-        private bool HasCaption
+        protected virtual bool HasCaption
         {
             get
             {
@@ -417,6 +416,8 @@ namespace WeifenLuo.WinFormsUI.Docking
             }
         }
 
+        private bool m_lastActivatedStatus = false;
+
         private bool m_isActivated = false;
         public bool IsActivated
         {
@@ -427,6 +428,8 @@ namespace WeifenLuo.WinFormsUI.Docking
             if (m_isActivated == value)
                 return;
 
+            if (DockPanel != null && DockPanel.IsApplicationActive)
+                m_lastActivatedStatus = value;
             m_isActivated = value;
             if (DockState != DockState.Document)
                 RefreshChanges(false);
@@ -1224,6 +1227,13 @@ namespace WeifenLuo.WinFormsUI.Docking
                 Activate();
 
             base.WndProc(ref m);
+        }
+
+
+        public bool IsActive()
+        {
+            return (!this.DockPanel.IsApplicationActive) ?
+                m_lastActivatedStatus : (ActiveContent == DockPanel.ActiveContent);
         }
 
         #region IDockDragSource Members

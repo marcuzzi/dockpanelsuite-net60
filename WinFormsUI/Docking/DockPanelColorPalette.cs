@@ -35,7 +35,9 @@ namespace WeifenLuo.WinFormsUI.Docking
         public ToolWindowTabPalette ToolWindowTabSelectedInactive { get; } = new ToolWindowTabPalette();
         public ToolWindowUnselectedTabPalette ToolWindowTabUnselected { get; } = new ToolWindowUnselectedTabPalette();
         public ToolWindowTabPalette ToolWindowTabUnselectedHovered { get; } = new ToolWindowTabPalette();
+        public Color ToolWindowBackground { get; set; }
         public Color ToolWindowBorder { get; set; }
+        public Color ToolWindowBorderFocus { get; set; }
         public Color ToolWindowSeparator { get; set; }
         public DockTargetPalette DockTarget { get; } = new DockTargetPalette();
         public CommandBarMenuPalette CommandBarMenuDefault { get; } = new CommandBarMenuPalette();
@@ -210,6 +212,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
     public class TabPalette
     {
+        public Color Border { get; set; }   // VS2026
         public Color Background { get; set; }
         public Color Button { get; set; }
         public Color Text { get; set; }
@@ -217,6 +220,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
     public class UnselectedTabPalette
     {
+        public Color Border { get; set; }   // VS2026
         public Color Background { get; set; } // VS2013 only
         public Color Text { get; set; }
     }

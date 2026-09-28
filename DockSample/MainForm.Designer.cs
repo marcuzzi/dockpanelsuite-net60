@@ -55,6 +55,7 @@ namespace DockSample
             this.menuItemLockLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemShowDocumentIcon = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemSchemaVS2026Dark = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSchemaVS2015Light = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSchemaVS2015Blue = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSchemaVS2015Dark = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,6 +98,7 @@ namespace DockSample
             this.itemBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disabledItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.vS2026DarkTheme1 = new WeifenLuo.WinFormsUI.Docking.VS2026DarkTheme();
             this.vS2015DarkTheme1 = new WeifenLuo.WinFormsUI.Docking.VS2015DarkTheme();
             this.vS2015BlueTheme1 = new WeifenLuo.WinFormsUI.Docking.VS2015BlueTheme();
             this.vS2005Theme1 = new WeifenLuo.WinFormsUI.Docking.VS2005Theme();
@@ -303,6 +305,7 @@ namespace DockSample
             this.menuItemLockLayout,
             this.menuItemShowDocumentIcon,
             this.menuItem3,
+            this.menuItemSchemaVS2026Dark,
             this.menuItemSchemaVS2015Light,
             this.menuItemSchemaVS2015Blue,
             this.menuItemSchemaVS2015Dark,
@@ -345,6 +348,13 @@ namespace DockSample
             // 
             this.menuItem3.Name = "menuItem3";
             this.menuItem3.Size = new System.Drawing.Size(252, 6);
+            // 
+            // menuItemSchemaVS2026Dark
+            // 
+            this.menuItemSchemaVS2026Dark.Name = "menuItemSchemaVS2026Dark";
+            this.menuItemSchemaVS2026Dark.Size = new System.Drawing.Size(255, 22);
+            this.menuItemSchemaVS2026Dark.Text = "Schema: VS2026 Dark";
+            this.menuItemSchemaVS2026Dark.Click += new System.EventHandler(this.SetSchema);
             // 
             // menuItemSchemaVS2015Light
             // 
@@ -755,6 +765,7 @@ namespace DockSample
         private System.Windows.Forms.StatusStrip statusBar;
         private System.Windows.Forms.ToolStripMenuItem showRightToLeft;
         private System.Windows.Forms.ToolStripMenuItem exitWithoutSavingLayout;
+        private System.Windows.Forms.ToolStripMenuItem menuItemSchemaVS2026Dark;
         private System.Windows.Forms.ToolStripMenuItem menuItemSchemaVS2012Light;
         private System.Windows.Forms.ToolStripMenuItem menuItemSchemaVS2012Blue;
         private System.Windows.Forms.ToolStripMenuItem menuItemSchemaVS2012Dark;
@@ -764,6 +775,7 @@ namespace DockSample
         private System.Windows.Forms.ToolStripMenuItem menuItemSchemaVS2015Light;
         private System.Windows.Forms.ToolStripMenuItem menuItemSchemaVS2015Blue;
         private System.Windows.Forms.ToolStripMenuItem menuItemSchemaVS2015Dark;
+        private WeifenLuo.WinFormsUI.Docking.VS2026DarkTheme vS2026DarkTheme1;
         private WeifenLuo.WinFormsUI.Docking.VS2015LightTheme vS2015LightTheme1;
         private WeifenLuo.WinFormsUI.Docking.VS2015BlueTheme vS2015BlueTheme1;
         private WeifenLuo.WinFormsUI.Docking.VS2015DarkTheme vS2015DarkTheme1;

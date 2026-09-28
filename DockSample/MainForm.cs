@@ -220,6 +220,11 @@ namespace DockSample
                 this.dockPanel.Theme = this.vS2015DarkTheme1;
                 this.EnableVSRenderer(VisualStudioToolStripExtender.VsVersion.Vs2015, vS2015DarkTheme1);
             }
+            else if (sender == this.menuItemSchemaVS2026Dark)
+            {
+                this.dockPanel.Theme = this.vS2026DarkTheme1;
+                this.EnableVSRenderer(VisualStudioToolStripExtender.VsVersion.Vs2015, vS2026DarkTheme1);
+            }
 
             menuItemSchemaVS2005.Checked = (sender == menuItemSchemaVS2005);
             menuItemSchemaVS2003.Checked = (sender == menuItemSchemaVS2003);
@@ -612,5 +617,52 @@ namespace DockSample
         {
             ResizeSplash();
         }
+
+
+
+        #region VS2026 dynamic pane borders
+
+        private bool _applicationActivated = true;
+
+
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+
+            _applicationActivated = true;
+            RepaintPanes();
+        }
+
+        protected override void OnDeactivate(EventArgs e)
+        {
+            base.OnDeactivate(e);
+
+            _applicationActivated = false;
+            RepaintPanes();
+        }
+
+        private void DockPanel_Resize(object sender, EventArgs e)
+        {
+            RepaintPanes();
+        }
+
+        private void DockPanel_ActiveContentChanged(object sender, EventArgs e)
+        {
+            RepaintPanes();
+        }
+
+        private void RepaintPanes()
+        {
+            if (this.dockPanel.Theme != vS2026DarkTheme1)
+                return;
+
+            if (_applicationActivated)
+            {
+                foreach (DockPane pane in dockPanel.Panes)
+                    pane.Invalidate();
+            }
+        }
+
+        #endregion
     }
 }

@@ -1,8 +1,9 @@
 using System;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Security.Permissions;
 using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
+using System.Security.Permissions;
+using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.ThemeVS2026;
 
 namespace WeifenLuo.WinFormsUI.Docking
 {
@@ -334,6 +335,13 @@ namespace WeifenLuo.WinFormsUI.Docking
                     }
                 }
             }
+        }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+
+            DwmWindowHelper.SetBorderColor(this, Color.FromArgb(122, 33, 1));
         }
 
         #region IDockDragSource Members

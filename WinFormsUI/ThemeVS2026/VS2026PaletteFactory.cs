@@ -4,25 +4,25 @@ using System.Linq;
 using System.Xml.Linq;
 using WeifenLuo.WinFormsUI.Docking;
 
-namespace WeifenLuo.WinFormsUI.ThemeVS2012
+namespace WeifenLuo.WinFormsUI.ThemeVS2026
 {
-    public class VS2012PaletteFactory : IPaletteFactory
+    public class VS2026PaletteFactory : IPaletteFactory
     {
         private const string Env = "Environment";
         private XDocument _xml;
 
-        public VS2012PaletteFactory(byte[] file)
+        public VS2026PaletteFactory(byte[] file)
         {
             _xml = XDocument.Load(new StreamReader(new MemoryStream(file)));
         }
 
         public void Initialize(DockPanelColorPalette palette)
         {
-            palette.AutoHideStripDefault.Background = ColorTranslatorFromHtml("AutoHideTabBackgroundBegin");
+            palette.AutoHideStripDefault.Background = ColorTranslatorFromHtml("AutoHideTabBackground");
             palette.AutoHideStripDefault.Border = ColorTranslatorFromHtml("AutoHideTabBorder");
             palette.AutoHideStripDefault.Text = ColorTranslatorFromHtml("AutoHideTabText");
 
-            palette.AutoHideStripHovered.Background = ColorTranslatorFromHtml("AutoHideTabMouseOverBackgroundBegin");
+            palette.AutoHideStripHovered.Background = ColorTranslatorFromHtml("AutoHideTabMouseOverBackground");
             palette.AutoHideStripHovered.Border = ColorTranslatorFromHtml("AutoHideTabMouseOverBorder");
             palette.AutoHideStripHovered.Text = ColorTranslatorFromHtml("AutoHideTabMouseOverText");
 
@@ -93,18 +93,21 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2012
             palette.OverflowButtonPressed.Border = ColorTranslatorFromHtml("DocWellOverflowButtonMouseDownBorder");
             palette.OverflowButtonPressed.Glyph = ColorTranslatorFromHtml("DocWellOverflowButtonMouseDownGlyph");
 
-            palette.TabSelectedActive.Background = ColorTranslatorFromHtml("FileTabSelectedBorder");
+            palette.TabSelectedActive.Border = ColorTranslatorFromHtml("FileTabSelectedBorder");
+            palette.TabSelectedActive.Background = ColorTranslatorFromHtml("FileTabSelectedBackground");
             palette.TabSelectedActive.Button = ColorTranslatorFromHtml("FileTabButtonSelectedActiveGlyph");
             palette.TabSelectedActive.Text = ColorTranslatorFromHtml("FileTabSelectedText");
 
-            palette.TabSelectedInactive.Background = ColorTranslatorFromHtml("FileTabInactiveBorder");
+            palette.TabSelectedInactive.Border = ColorTranslatorFromHtml("ToolWindowTabSeparator");     // FIX
+            palette.TabSelectedInactive.Background = ColorTranslatorFromHtml("FileTabInactiveBackground");
             palette.TabSelectedInactive.Button = ColorTranslatorFromHtml("FileTabButtonSelectedInactiveGlyph");
             palette.TabSelectedInactive.Text = ColorTranslatorFromHtml("FileTabInactiveText");
 
+            palette.TabUnselected.Border = ColorTranslatorFromHtml("FileTabInactiveBorder");      // FIX
             palette.TabUnselected.Text = ColorTranslatorFromHtml("FileTabText");
             palette.TabUnselected.Background = ColorTranslatorFromHtml("FileTabBackground");
 
-            palette.TabUnselectedHovered.Background = ColorTranslatorFromHtml("FileTabHotBorder");
+            palette.TabUnselectedHovered.Background = ColorTranslatorFromHtml("FileTabUnselectedHoverBackground");
             palette.TabUnselectedHovered.Button = ColorTranslatorFromHtml("FileTabHotGlyph");
             palette.TabUnselectedHovered.Text = ColorTranslatorFromHtml("FileTabHotText");
 
@@ -169,14 +172,15 @@ namespace WeifenLuo.WinFormsUI.ThemeVS2012
             palette.ToolWindowTabSelectedInactive.Text = ColorTranslatorFromHtml("ToolWindowTabSelectedText");
 
             palette.ToolWindowTabUnselected.Text = ColorTranslatorFromHtml("ToolWindowTabText");
-            palette.ToolWindowTabUnselected.Background = ColorTranslatorFromHtml("ToolWindowTabGradientBegin");
+            palette.ToolWindowTabUnselected.Background = ColorTranslatorFromHtml("ToolWindowTabUnselectedBackground");          // Color OK
 
-            palette.ToolWindowTabUnselectedHovered.Background = ColorTranslatorFromHtml("ToolWindowTabMouseOverBackgroundBegin");
-            palette.ToolWindowTabUnselectedHovered.Text = ColorTranslatorFromHtml("ToolWindowTabMouseOverText");
-
+            palette.ToolWindowTabUnselectedHovered.Background = ColorTranslatorFromHtml("ToolWindowTabMouseOverBackground");    // Color OK
+            palette.ToolWindowTabUnselectedHovered.Text = ColorTranslatorFromHtml("ToolWindowTabMouseOverText");                // Color OK
 
             palette.ToolWindowSeparator = ColorTranslatorFromHtml("ToolWindowTabSeparator");
+            palette.ToolWindowBackground = ColorTranslatorFromHtml("ToolWindowBackground");
             palette.ToolWindowBorder = ColorTranslatorFromHtml("ToolWindowBorder");
+            palette.ToolWindowBorderFocus = ColorTranslatorFromHtml("ToolWindowBorderFocus");
 
             palette.DockTarget.Background = ColorTranslatorFromHtml("DockTargetBackground");
             palette.DockTarget.Border = ColorTranslatorFromHtml("DockTargetBorder");

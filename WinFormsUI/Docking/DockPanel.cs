@@ -1163,5 +1163,8 @@ namespace WeifenLuo.WinFormsUI.Docking
             old.Parent = null;
             old.Dispose();
         }
+
+        public bool IsApplicationActive;
+
     }
 }

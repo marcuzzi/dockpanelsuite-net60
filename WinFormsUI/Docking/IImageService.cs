@@ -52,54 +52,47 @@ namespace WeifenLuo.WinFormsUI.Docking
 
     public static class ImageServiceHelper
     {
+        private static bool  DpiComputed = false;
+        private static float DpiScale = 1.0f;
+
         /// <summary>
-        /// Gets the current DPI scaling factor.
+        /// Returns the current DPI scaling factor.
         /// </summary>
         /// <returns>The DPI scaling factor, or 1.0 if DPI awareness is disabled.</returns>
+        /// <remarks>The DPI value is acquired once and stored in DpiScale</remarks>
         private static float GetDpiScale()
         {
+            if (DpiComputed)
+                return DpiScale;
+
             if (PatchController.EnableHighDpi != true)
-                return 1.0f;
+            {
+                DpiScale = 1.0f;
+                DpiComputed = true;
+                return DpiScale;
+            }
 
             // Use a temporary control to get the current DPI
-            using (var control = new Control())
-            {
-                using (var graphics = control.CreateGraphics())
-                {
-                    return graphics.DpiX / 96.0f;
-                }
-            }
+            using var control = new Control();
+            using var graphics = control.CreateGraphics();
+            DpiScale = graphics.DpiX / 96.0f;
+            DpiComputed = true;
+            return DpiScale;
         }
 
         /// <summary>
-        /// Draws an image with DPI scaling awareness.
+        /// Resizes a bitmap
         /// </summary>
-        /// <param name="graphics">The graphics context to draw on.</param>
-        /// <param name="image">The image to draw.</param>
-        /// <param name="x">The x-coordinate.</param>
-        /// <param name="y">The y-coordinate.</param>
-        private static void DrawImageDpiAware(Graphics graphics, Image image, int x, int y)
-        {
-            if (PatchController.EnableHighDpi == true)
-            {
-                // When DPI scaling is enabled, draw the image at its actual size
-                // but position it at the scaled coordinates
-                graphics.DrawImage(image, ScaleValue(x), ScaleValue(y));
-            }
-            else
-            {
-                graphics.DrawImageUnscaled(image, x, y);
-            }
-        }
-
+        /// <param name="map">Original bitmap</param>
+        /// <param name="width">New width</param>
+        /// <param name="height">New height</param>
+        /// <returns>The resized bitmap</returns>
         public static Bitmap ResizeBitmap(Bitmap map, int width, int height)
         {
             Bitmap result = new Bitmap(width, height);
-            using (Graphics g = Graphics.FromImage(result))
-            {
-                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                g.DrawImage(map, 0, 0, width, height);
-            }
+            using var g = Graphics.FromImage(result);
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            g.DrawImage(map, 0, 0, width, height);
             return result;
         }
 
@@ -117,6 +110,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             }
             return value;
         }
+
         /// <summary>
         /// Gets images for tabs and captions.
         /// </summary>
@@ -384,9 +378,18 @@ namespace WeifenLuo.WinFormsUI.Docking
             return result;
         }
 
+        public static Point ScaledPoint(int x, int y)
+        {
+            float scale = GetDpiScale();
+            
+            if (scale == 1.0f)
+                return new Point(x, y);
+            else
+                return new Point((int) (x * scale), (int) (y * scale));
+        }
+
         public static Bitmap GetFiveBackground(Bitmap mask, Color innerBorder, Color outerBorder, IPaintingService painting)
         {
-            // TODO: calculate points using functions.
             int scaledWidth = ScaleValue(mask.Width);
             bool rescale = (scaledWidth != mask.Width);
             using (var input = GetLayerImage(innerBorder, scaledWidth, painting))
@@ -396,29 +399,29 @@ namespace WeifenLuo.WinFormsUI.Docking
                     var pen = painting.GetPen(outerBorder);
                     gfx.DrawLines(pen, new[]
                     {
-                        new Point(ScaleValue(36), ScaleValue(25)), new Point(ScaleValue(36), 0),
-                        new Point(ScaleValue(75), 0), new Point(ScaleValue(75), ScaleValue(25))
+                        ScaledPoint(36, 25), ScaledPoint(36, 0),
+                        ScaledPoint(75, 0), ScaledPoint(75, 25)
                     });
                     gfx.DrawLines(pen, new[]
                     {
-                        new Point(ScaleValue(86), ScaleValue(36)), new Point(ScaleValue(111), ScaleValue(36)),
-                        new Point(ScaleValue(111), ScaleValue(75)), new Point(ScaleValue(86), ScaleValue(75))
+                        ScaledPoint(86, 36), ScaledPoint(111, 36),
+                        ScaledPoint(11, 75), ScaledPoint(86, 75)
                     });
                     gfx.DrawLines(pen, new[]
                     {
-                        new Point(ScaleValue(75), ScaleValue(86)), new Point(ScaleValue(75), ScaleValue(111)),
-                        new Point(ScaleValue(36), ScaleValue(111)), new Point(ScaleValue(36), ScaleValue(86))
+                        ScaledPoint(75, 86), ScaledPoint(75, 111),
+                        ScaledPoint(36, 111), ScaledPoint(36, 86)
                     });
                     gfx.DrawLines(pen, new[]
                     {
-                        new Point(ScaleValue(25), ScaleValue(75)), new Point(0, ScaleValue(75)),
-                        new Point(0, ScaleValue(36)), new Point(ScaleValue(25), ScaleValue(36))
+                        ScaledPoint(25, 75), ScaledPoint(0, 75),
+                        ScaledPoint(0, 36), ScaledPoint(25, 36)
                     });
                     var pen2 = painting.GetPen(outerBorder, ScaleValue(2));
-                    gfx.DrawLine(pen2, new Point(ScaleValue(36), ScaleValue(25)), new Point(ScaleValue(25), ScaleValue(36)));
-                    gfx.DrawLine(pen2, new Point(ScaleValue(75), ScaleValue(25)), new Point(ScaleValue(86), ScaleValue(36)));
-                    gfx.DrawLine(pen2, new Point(ScaleValue(86), ScaleValue(75)), new Point(ScaleValue(75), ScaleValue(86)));
-                    gfx.DrawLine(pen2, new Point(ScaleValue(36), ScaleValue(86)), new Point(ScaleValue(25), ScaleValue(75)));
+                    gfx.DrawLine(pen2, ScaledPoint(36, 25), ScaledPoint(25, 36));
+                    gfx.DrawLine(pen2, ScaledPoint(75, 25), ScaledPoint(86, 36));
+                    gfx.DrawLine(pen2, ScaledPoint(86, 75), ScaledPoint(75, 86));
+                    gfx.DrawLine(pen2, ScaledPoint(36, 86), ScaledPoint(25, 75));
                 }
 
                 Bitmap output = null;

@@ -54,12 +54,42 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Update="ThemeVS2026\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="ThemeVS2026\VS2026DockPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ThemeVS2026\VS2026DockWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="ThemeVS2026\VS2026AutoHideStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="ThemeVS2026\VS2026DockPaneStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="ThemeVS2026\VS2026DockPaneCaptionInertButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="ThemeVS2026\VS2026DarkTheme.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="ThemeVS2026\VS2026ThemeBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="ThemeVS2005\Strings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ThemeVS2026\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

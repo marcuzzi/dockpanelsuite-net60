@@ -29,22 +29,81 @@ namespace WeifenLuo.WinFormsUI.Docking
             else
                 graphicsPath.Reset();
 
-            int curveSize = 6;
+            int curveSize = 8;
+            int halfCurveSize = curveSize / 2;
             if (upCorner)
             {
-                graphicsPath.AddLine(rect.Left, rect.Bottom, rect.Left, rect.Top + curveSize / 2);
+                graphicsPath.AddLine(rect.Left, rect.Bottom, rect.Left, rect.Top + halfCurveSize);
                 graphicsPath.AddArc(new Rectangle(rect.Left, rect.Top, curveSize, curveSize), 180, 90);
-                graphicsPath.AddLine(rect.Left + curveSize / 2, rect.Top, rect.Right - curveSize / 2, rect.Top);
+                graphicsPath.AddLine(rect.Left + halfCurveSize, rect.Top, rect.Right - halfCurveSize, rect.Top);
                 graphicsPath.AddArc(new Rectangle(rect.Right - curveSize, rect.Top, curveSize, curveSize), -90, 90);
-                graphicsPath.AddLine(rect.Right, rect.Top + curveSize / 2, rect.Right, rect.Bottom);
+                graphicsPath.AddLine(rect.Right, rect.Top + halfCurveSize, rect.Right, rect.Bottom);
             }
             else
             {
-                graphicsPath.AddLine(rect.Right, rect.Top, rect.Right, rect.Bottom - curveSize / 2);
+                graphicsPath.AddLine(rect.Right, rect.Top, rect.Right, rect.Bottom - halfCurveSize);
                 graphicsPath.AddArc(new Rectangle(rect.Right - curveSize, rect.Bottom - curveSize, curveSize, curveSize), 0, 90);
-                graphicsPath.AddLine(rect.Right - curveSize / 2, rect.Bottom, rect.Left + curveSize / 2, rect.Bottom);
+                graphicsPath.AddLine(rect.Right - halfCurveSize, rect.Bottom, rect.Left + halfCurveSize, rect.Bottom);
                 graphicsPath.AddArc(new Rectangle(rect.Left, rect.Bottom - curveSize, curveSize, curveSize), 90, 90);
-                graphicsPath.AddLine(rect.Left, rect.Bottom - curveSize / 2, rect.Left, rect.Top);
+                graphicsPath.AddLine(rect.Left, rect.Bottom - halfCurveSize, rect.Left, rect.Top);
+            }
+
+            return graphicsPath;
+        }
+
+        public static GraphicsPath GetRoundedCornerTab2026(GraphicsPath graphicsPath, Rectangle rect, int curveSize, bool upCorner, bool leftCurve = false, bool rightCurve = false)
+        {
+            if (graphicsPath == null)
+                graphicsPath = new GraphicsPath();
+            else
+                graphicsPath.Reset();
+
+            int halfCurveSize = curveSize / 2;
+            if (upCorner)
+            {
+                if (leftCurve)
+                {
+                    graphicsPath.AddArc(new Rectangle(rect.Left - curveSize, rect.Bottom - curveSize - 1, curveSize, curveSize), 90, -90);
+                }
+                else
+                {
+                    graphicsPath.AddLine(rect.Left, rect.Bottom, rect.Left, rect.Top + halfCurveSize);
+                }
+                graphicsPath.AddArc(new Rectangle(rect.Left, rect.Top, curveSize, curveSize), 180, 90);
+                graphicsPath.AddLine(rect.Left + halfCurveSize, rect.Top, rect.Right - halfCurveSize, rect.Top);
+                graphicsPath.AddArc(new Rectangle(rect.Right - curveSize, rect.Top, curveSize, curveSize), -90, 90);
+                if (rightCurve)
+                {
+                    graphicsPath.AddArc(new Rectangle(rect.Right, rect.Bottom - curveSize - 1, curveSize, curveSize), 180, -90);
+                }
+                else
+                {
+                    graphicsPath.AddLine(rect.Right, rect.Top + halfCurveSize, rect.Right, rect.Bottom);
+                }
+            }
+            else
+            {
+                if (rightCurve)
+                {
+                    graphicsPath.AddArc(new Rectangle(rect.Right, rect.Top, curveSize, curveSize), 270, -90);
+                    //graphicsPath.AddLine(rect.Right, rect.Top - curveSize, rect.Right, rect.Bottom - halfCurveSize);
+                }
+                else
+                {
+                    graphicsPath.AddLine(rect.Right, rect.Top, rect.Right, rect.Bottom - halfCurveSize);
+                }
+                graphicsPath.AddArc(new Rectangle(rect.Right - curveSize, rect.Bottom - curveSize, curveSize, curveSize), 0, 90);
+                graphicsPath.AddLine(rect.Right - halfCurveSize, rect.Bottom, rect.Left + halfCurveSize, rect.Bottom);
+                graphicsPath.AddArc(new Rectangle(rect.Left, rect.Bottom - curveSize, curveSize, curveSize), 90, 90);
+                if (leftCurve)
+                {
+                    //graphicsPath.AddLine(rect.Left, rect.Bottom - halfCurveSize, rect.Left, rect.Top - curveSize);
+                    graphicsPath.AddArc(new Rectangle(rect.Left - curveSize, rect.Top, curveSize, curveSize), 0, -90);
+                }
+                else
+                {
+                    graphicsPath.AddLine(rect.Left, rect.Bottom - halfCurveSize, rect.Left, rect.Top);
+                }
             }
 
             return graphicsPath;
